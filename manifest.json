@@ -1,0 +1,26 @@
+{
+  "dxt_version": "0.1",
+  "name": "openai-compat-mcp",
+  "display_name": "OpenAI Compat MCP",
+  "version": "1.0.0",
+  "description": "Bridge any OpenAI-compatible API (DeepSeek / Zhipu / Qwen / Moonshot / vLLM) into an MCP server for Claude Desktop, Cursor and other MCP clients.",
+  "author": { "name": "zjukop3" },
+  "server": {
+    "type": "node",
+    "entry_point": "index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/index.js"],
+      "env": {
+        "OPENAI_BASE_URL": "${user_config.openaiBaseUrl}",
+        "OPENAI_API_KEY": "${user_config.openaiApiKey}",
+        "MODEL": "${user_config.model}"
+      }
+    },
+    "user_config": {
+      "openaiBaseUrl": { "type": "string", "title": "API Base URL", "description": "任意 OpenAI 兼容网关地址 (Any OpenAI-compatible gateway URL)", "required": false, "default": "https://api.deepseek.com/v1" },
+      "openaiApiKey": { "type": "string", "title": "API Key", "description": "网关密钥 (Gateway API key)", "required": true, "sensitive": true },
+      "model": { "type": "string", "title": "Default Model", "description": "默认模型名 (Default model name)", "required": false, "default": "deepseek-chat" }
+    }
+  }
+}
