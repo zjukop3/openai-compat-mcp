@@ -1,0 +1,35 @@
+# Smithery configuration file: https://smithery.ai
+# 让 Smithery 能一键安装并运行本 MCP server
+
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      openaiBaseUrl:
+        type: string
+        title: API Base URL
+        description: 任意 OpenAI 兼容网关地址
+        default: https://api.deepseek.com/v1
+      openaiApiKey:
+        type: string
+        title: API Key
+        description: 网关密钥
+      model:
+        type: string
+        title: Default Model
+        description: 默认模型名
+        default: deepseek-chat
+    required:
+      - openaiApiKey
+  commandFunction:
+    |-
+    (config) => ({
+      "command": "node",
+      "args": ["index.js"],
+      "env": {
+        "OPENAI_BASE_URL": config.openaiBaseUrl || "https://api.deepseek.com/v1",
+        "OPENAI_API_KEY": config.openaiApiKey,
+        "MODEL": config.model || "deepseek-chat"
+      }
+    })
