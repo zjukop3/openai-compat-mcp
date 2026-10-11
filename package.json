@@ -1,0 +1,28 @@
+{
+  "name": "openai-compat-mcp",
+  "version": "1.0.0",
+  "description": "Bridge any OpenAI-compatible API (DeepSeek / Zhipu / Qwen / Moonshot / self-hosted vLLM) into a Model Context Protocol server for Claude Desktop, Cursor and other MCP clients.",
+  "type": "module",
+  "main": "index.js",
+  "bin": { "openai-compat-mcp": "index.js" },
+  "scripts": { "start": "node index.js" },
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "openai",
+    "openai-compatible",
+    "llm",
+    "claude",
+    "cursor",
+    "deepseek",
+    "zhipu",
+    "qwen",
+    "gateway"
+  ],
+  "license": "MIT",
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "zod": "^3.24.0"
+  }
+}
